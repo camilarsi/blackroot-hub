@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Root | Acceso</title>
+    <meta name="description" content="Black Root: Básicos premium diseñados para perdurar. Explorá nuestra colección minorista o aplicá como representante oficial.">
+    
+    <!-- Fonts: Montserrat & Cormorant Garamond -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --transition-smooth: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            --font-serif: 'Cormorant Garamond', serif;
+            --font-sans: 'Montserrat', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: var(--font-sans);
+            background-color: #000;
+            overflow: hidden; /* Prevent scroll on desktop */
+        }
+
+        .hero-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+        }
+
+        /* 
+         * Background Image
+         * Nota: Reemplazá 'split-hero.jpg' con el nombre de la imagen que me enviaste.
+         */
+        .hero-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('microlanding-background.png');
+            background-size: cover;
+            background-position: center top;
+            background-repeat: no-repeat;
+            z-index: 0;
+        }
+
+        /* Degradado oscuro para asegurar legibilidad */
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%);
+            z-index: 1;
+        }
+
+        /* Center Logo */
+        .logo-container {
+            position: absolute;
+            top: 60px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            z-index: 30;
+            pointer-events: none; /* Allows clicking through it */
+        }
+
+        .logo-img {
+            max-width: 200px;
+            height: auto;
+            filter: brightness(1);
+        }
+
+        /* Split Links Container */
+        .split-links {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            z-index: 10;
+        }
+
+        .split-link {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+
+        /* Left Side -> Light Text */
+        .link-retail {
+            color: #f2f2f2;
+            align-items: flex-start;
+            padding-left: 10%;
+        }
+
+        /* Right Side -> Light Text */
+        .link-wholesale {
+            color: #f2f2f2;
+            align-items: flex-end;
+            padding-right: 10%;
+            text-align: right;
+        }
+
+        /* Hover Overlays Removed per request */
+        .split-link::before {
+            display: none;
+        }
+
+        /* Content Styling */
+        .content {
+            position: relative;
+            z-index: 2;
+            transform: translateY(10px);
+            transition: var(--transition-smooth);
+            max-width: 400px;
+        }
+
+        .split-link:hover .content {
+            transform: translateY(-5px);
+        }
+
+        .card-category {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            margin-bottom: 16px;
+            display: block;
+            opacity: 0.6;
+            transition: var(--transition-smooth);
+        }
+
+        .split-link:hover .card-category {
+            opacity: 1;
+            letter-spacing: 0.4em;
+        }
+
+        .card-title {
+            font-family: var(--font-serif);
+            font-size: 3.5rem;
+            line-height: 1.1;
+            font-weight: 300;
+            margin-bottom: 24px;
+            font-style: italic;
+        }
+
+        .card-subtext {
+            font-size: 0.8rem;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            opacity: 0.7;
+            transition: var(--transition-smooth);
+        }
+
+        .split-link:hover .card-subtext {
+            opacity: 1;
+        }
+
+        .arrow {
+            font-size: 1.5rem;
+            font-weight: 200;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .link-retail:hover .arrow { transform: translateX(10px); }
+        .link-wholesale:hover .arrow { transform: translateX(10px); }
+
+        /* Footer centered at bottom */
+        footer {
+            position: absolute;
+            bottom: 30px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            text-transform: uppercase;
+            z-index: 20;
+            pointer-events: none;
+            color: #FFFFFF;
+        }
+
+        footer a {
+            color: inherit;
+            text-decoration: none;
+            pointer-events: auto;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        footer a:hover {
+            opacity: 1;
+        }
+
+        .footer-divider {
+            opacity: 0.3;
+        }
+
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+            body, html {
+                overflow: auto;
+            }
+            .hero-container {
+                height: 100vh;
+                min-height: 700px;
+            }
+            .split-links {
+                flex-direction: column;
+            }
+            .split-link {
+                justify-content: flex-end;
+                padding-bottom: 80px;
+                text-align: center;
+                align-items: center;
+            }
+            .link-retail, .link-wholesale {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+            /* Darken top and bottom slightly to ensure text is readable if image centers poorly on mobile */
+            .link-retail::after {
+                content:''; position:absolute; top:0; left:0; width:100%; height:100%;
+                background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.7));
+                z-index: 0;
+                pointer-events: none;
+            }
+            .link-wholesale::after {
+                content:''; position:absolute; top:0; left:0; width:100%; height:100%;
+                background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.7));
+                z-index: 0;
+                pointer-events: none;
+            }
+            .card-title {
+                font-size: 2.5rem;
+            }
+            .logo-container {
+                top: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hero-container">
+        
+        <!-- Imagen de Fondo Unificada -->
+        <div class="hero-bg"></div>
+
+       
+
+        <!-- Enlaces / Split Screen -->
+        <div class="split-links">
+            <!-- Izquierda: Minorista (Mitad Blanca) -->
+            <a href="https://tienda.blackroot.com.ar?utm_source=instagram&utm_medium=bio&utm_campaign=hub" 
+               class="split-link link-retail"
+               aria-label="Explorar colección minorista">
+                <div class="content">
+                    <span class="card-category">Retail Store</span>
+                    <h2 class="card-title">Explorar<br>colección</h2>
+                    <div class="card-subtext">
+                        <span>Tienda online minorista</span>
+                        <span class="arrow">→</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Derecha: Mayorista (Mitad Negra) -->
+            <a href="https://comercial.blackroot.com.ar?utm_source=instagram&utm_medium=bio&utm_campaign=hub" 
+               class="split-link link-wholesale"
+               aria-label="Aplicar como representante oficial">
+                <div class="content">
+                    <span class="card-category">Wholesale</span>
+                    <h2 class="card-title">Aplicar como<br>representante</h2>
+                    <div class="card-subtext">
+                        <span>Acceso comercial exclusivo</span>
+                        <span class="arrow">→</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <span>ARG</span>
+            <span class="footer-divider">|</span>
+            <span>&copy; <script>document.write(new Date().getFullYear())</script> Black Root</span>
+            <span class="footer-divider">|</span>
+            <a href="https://instagram.com/blackroot.ar" target="_blank" rel="noopener">Instagram</a>
+        </footer>
+
+    </div>
+
+</body>
+</html>
