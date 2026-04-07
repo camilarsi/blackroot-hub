@@ -221,39 +221,108 @@
             }
             .hero-container {
                 height: 100vh;
-                min-height: 700px;
+                height: 100dvh;
+                min-height: 680px;
+            }
+            .hero-bg::after {
+                background: linear-gradient(
+                    180deg,
+                    rgba(0,0,0,0) 25%,
+                    rgba(0,0,0,0.45) 55%,
+                    rgba(0,0,0,0.85) 100%
+                );
             }
             .split-links {
                 flex-direction: column;
+                justify-content: flex-end;
+                padding-bottom: 70px;
+                gap: 0;
             }
             .split-link {
-                justify-content: flex-end;
-                padding-bottom: 80px;
+                flex: none;
+                justify-content: center;
                 text-align: center;
                 align-items: center;
+                padding: 20px 30px;
             }
             .link-retail, .link-wholesale {
-                padding-left: 20px;
-                padding-right: 20px;
+                padding-left: 30px;
+                padding-right: 30px;
             }
-            /* Darken top and bottom slightly to ensure text is readable if image centers poorly on mobile */
-            .link-retail::after {
-                content:''; position:absolute; top:0; left:0; width:100%; height:100%;
-                background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.7));
-                z-index: 0;
-                pointer-events: none;
+            .link-retail {
+                border-bottom: 1px solid rgba(255,255,255,0.15);
+                padding-bottom: 24px;
             }
+            .link-wholesale {
+                padding-top: 24px;
+            }
+            .link-retail::after,
             .link-wholesale::after {
-                content:''; position:absolute; top:0; left:0; width:100%; height:100%;
-                background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.7));
-                z-index: 0;
-                pointer-events: none;
+                display: none;
+            }
+            .content {
+                transform: none;
+                max-width: 100%;
+            }
+            .split-link:hover .content {
+                transform: none;
+            }
+            .card-category {
+                margin-bottom: 8px;
+                font-size: 0.6rem;
             }
             .card-title {
-                font-size: 2.5rem;
+                font-size: 2rem;
+                margin-bottom: 12px;
+            }
+            .card-subtext {
+                font-size: 0.75rem;
             }
             .logo-container {
                 top: 30px;
+            }
+            footer {
+                bottom: 18px;
+                font-size: 0.6rem;
+                gap: 20px;
+            }
+        }
+
+        /* WhatsApp Floating Button */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            width: 62px;
+            height: 62px;
+            background-color: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        }
+        .whatsapp-btn svg {
+            width: 34px;
+            height: 34px;
+        }
+
+        @media (max-width: 768px) {
+            .whatsapp-btn {
+                bottom: 40px;
+                right: 20px;
+                width: 48px;
+                height: 48px;
+            }
+            .whatsapp-btn svg {
+                width: 26px;
+                height: 26px;
             }
         }
     </style>
@@ -286,10 +355,10 @@
             <!-- Derecha: Mayorista (Mitad Negra) -->
             <a href="https://comercial.blackroot.com.ar?utm_source=instagram&utm_medium=bio&utm_campaign=hub" 
                class="split-link link-wholesale"
-               aria-label="Aplicar como representante oficial">
+               aria-label="Propuesta de representación y reventa">
                 <div class="content">
                     <span class="card-category">Wholesale</span>
-                    <h2 class="card-title">Aplicar como<br>representante</h2>
+                    <h2 class="card-title">Propuesta de<br>representación y reventa</h2>
                     <div class="card-subtext">
                         <span>Acceso comercial exclusivo</span>
                         <span class="arrow">→</span>
@@ -308,6 +377,13 @@
         </footer>
 
     </div>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/542494209391" target="_blank" rel="noopener" class="whatsapp-btn" aria-label="Contactar por WhatsApp">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16.004 2.667A13.28 13.28 0 0 0 2.73 15.94a13.2 13.2 0 0 0 1.788 6.636L2.667 29.333l6.96-1.824A13.28 13.28 0 0 0 16.004 29.333 13.28 13.28 0 0 0 29.333 16.004 13.28 13.28 0 0 0 16.004 2.667Zm0 24.27a10.88 10.88 0 0 1-5.88-1.72l-.42-.252-4.36 1.144 1.164-4.248-.276-.44a10.84 10.84 0 0 1-1.668-5.8A10.88 10.88 0 0 1 16.004 4.18 10.88 10.88 0 0 1 27.444 16.004a10.88 10.88 0 0 1-11.44 10.933Zm5.964-8.148c-.328-.164-1.94-.956-2.24-1.064-.3-.112-.52-.164-.736.164-.22.328-.848 1.064-1.04 1.284-.192.216-.384.244-.712.08-.328-.164-1.384-.512-2.636-1.628-.976-.868-1.632-1.944-1.824-2.272-.192-.328-.02-.504.144-.668.148-.148.328-.384.492-.576.164-.192.22-.328.328-.548.112-.216.056-.408-.028-.576-.084-.164-.736-1.776-1.008-2.432-.264-.64-.536-.552-.736-.56l-.628-.012a1.2 1.2 0 0 0-.872.408c-.3.328-1.144 1.12-1.144 2.728s1.172 3.164 1.336 3.384c.164.216 2.308 3.52 5.592 4.94.78.34 1.392.54 1.868.692.784.248 1.5.212 2.064.128.63-.092 1.94-.792 2.212-1.556.276-.764.276-1.42.192-1.556-.08-.14-.3-.22-.628-.384Z" fill="#fff"/>
+        </svg>
+    </a>
 
 </body>
 </html>
